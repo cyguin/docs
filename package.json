@@ -1,6 +1,6 @@
 {
   "name": "@cyguin/docs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drop-in docs widget and admin API for self-hosted Next.js apps",
   "license": "MIT",
   "keywords": [
