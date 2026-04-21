@@ -38,7 +38,25 @@ const adapter = createSQLiteAdapter({ path: './docs.db' });
 export const GET = createDocsHandler({ adapter });
 ```
 
-### 3. Seed some articles
+### 3. Wire up the admin route
+
+```ts
+// app/api/admin/docs/[...route]/route.ts
+import { createAdminHandler } from '@cyguin/docs/next';
+import { createSQLiteAdapter } from '@cyguin/docs/adapters/sqlite';
+
+const adapter = createSQLiteAdapter({ path: './docs.db' });
+const handler = createAdminHandler({
+  adapter,
+  secret: process.env.DOCS_ADMIN_SECRET,
+});
+
+export { handler as POST, handler as PUT, handler as PATCH, handler as DELETE };
+```
+
+`DOCS_ADMIN_SECRET` is required. Admin writes fail closed when the secret is missing.
+
+### 4. Seed some articles
 
 ```ts
 import { createDocsHandler } from '@cyguin/docs/next';
@@ -50,7 +68,7 @@ const handler = createDocsHandler({ adapter });
 // POST /admin/docs — create article
 await handler.request(new Request('http://localhost/admin/docs', {
   method: 'POST',
-  headers: { 'x-secret': 'your-secret', 'Content-Type': 'application/json' },
+  headers: { Authorization: 'Bearer your-secret', 'Content-Type': 'application/json' },
   body: JSON.stringify({
     title: 'Getting Started',
     body_md: '# Getting Started\n\nWelcome to **My App**!',

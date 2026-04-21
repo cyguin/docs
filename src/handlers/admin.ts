@@ -26,12 +26,14 @@ export function createAdminHandler(options?: DocsHandlerOptions) {
     req: Request,
     context?: { params?: Record<string, string | string[]> }
   ): Promise<Response> {
-    if (secret) {
-      const authHeader = req.headers.get('Authorization')
-      const expected = `Bearer ${secret}`
-      if (authHeader !== expected) {
-        return Response.json({ error: 'Unauthorized' }, { status: 401 })
-      }
+    if (!secret) {
+      return Response.json({ error: 'Admin secret is not configured' }, { status: 500 })
+    }
+
+    const authHeader = req.headers.get('Authorization')
+    const expected = `Bearer ${secret}`
+    if (authHeader !== expected) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const pathParts = (context?.params?.route ?? []) as string[]
@@ -82,8 +84,7 @@ export function createAdminHandler(options?: DocsHandlerOptions) {
       return Response.json({ error: 'Not found' }, { status: 404 })
     } catch (err) {
       console.error('Admin handler error:', err)
-      const message = err instanceof Error ? err.message : 'Internal server error'
-      return Response.json({ error: message }, { status: 500 })
+      return Response.json({ error: 'Internal server error' }, { status: 500 })
     }
   } as NextHandler
 }

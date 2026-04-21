@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import type { DocArticle, DocsWidgetProps } from '../types.js';
 
@@ -61,7 +62,7 @@ function BackIcon() {
 }
 
 function renderMarkdown(md: string): string {
-  return marked.parse(md) as string;
+  return DOMPurify.sanitize(marked.parse(md) as string);
 }
 
 interface ArticleGroup {
