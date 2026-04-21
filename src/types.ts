@@ -49,14 +49,14 @@ export interface DocsWidgetProps {
 }
 
 export const defaultCssVars = {
-  '--cyguin-docs-bg': 'var(--cyguin-surface, #ffffff)',
-  '--cyguin-docs-text': 'var(--cyguin-text, #1a1a1a)',
-  '--cyguin-docs-border': 'var(--cyguin-border, #e5e5e5)',
-  '--cyguin-docs-accent': 'var(--cyguin-primary, #6366f1)',
-  '--cyguin-docs-muted': 'var(--cyguin-muted, #737373)',
+  '--cyguin-docs-bg': 'var(--cyguin-bg, #0a0d17)',
+  '--cyguin-docs-text': 'var(--cyguin-fg, #f1f3f6)',
+  '--cyguin-docs-border': 'var(--cyguin-border, #252b3a)',
+  '--cyguin-docs-accent': 'var(--cyguin-accent, #ffd21f)',
+  '--cyguin-docs-muted': 'var(--cyguin-fg-muted, #858b98)',
   '--cyguin-docs-backdrop-opacity': '0.5',
   '--cyguin-docs-radius': 'var(--cyguin-radius, 8px)',
-  '--cyguin-docs-shadow': 'var(--cyguin-shadow, 0 4px 24px rgba(0,0,0,0.12))',
+  '--cyguin-docs-shadow': 'var(--cyguin-shadow, 0 18px 50px rgba(0,0,0,0.32))',
   '--cyguin-docs-trigger-size': '48px',
   '--cyguin-docs-font': 'var(--cyguin-font, system-ui, sans-serif)',
 } as const

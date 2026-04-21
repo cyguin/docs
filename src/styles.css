@@ -1,11 +1,22 @@
 :root {
   --cyguin-docs-bg: var(--cyguin-bg, #ffffff);
-  --cyguin-docs-text: var(--cyguin-fg, #0a0a0a);
+  --cyguin-docs-text: var(--cyguin-fg, #0a0d17);
   --cyguin-docs-border: var(--cyguin-border, #e5e5e5);
-  --cyguin-docs-accent: var(--cyguin-accent, #f5a800);
-  --cyguin-docs-muted: var(--cyguin-fg-muted, #888888);
+  --cyguin-docs-accent: var(--cyguin-accent, #ffd21f);
+  --cyguin-docs-muted: var(--cyguin-fg-muted, #858b98);
   --cyguin-docs-backdrop-opacity: 0.5;
   --cyguin-docs-radius: var(--cyguin-radius, 6px);
   --cyguin-docs-shadow: var(--cyguin-shadow, 0 1px 4px rgba(0,0,0,0.08));
   --cyguin-docs-font: system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cyguin-docs-bg: var(--cyguin-bg, #0a0d17);
+    --cyguin-docs-text: var(--cyguin-fg, #f1f3f6);
+    --cyguin-docs-border: var(--cyguin-border, #252b3a);
+    --cyguin-docs-accent: var(--cyguin-accent, #ffd21f);
+    --cyguin-docs-muted: var(--cyguin-fg-muted, #858b98);
+    --cyguin-docs-shadow: var(--cyguin-shadow, 0 18px 50px rgba(0,0,0,0.32));
+  }
 }

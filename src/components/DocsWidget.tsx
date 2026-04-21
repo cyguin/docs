@@ -101,7 +101,7 @@ function DocsTrigger({ label, onClick }: DocsTriggerProps) {
         height: '48px',
         borderRadius: 'var(--cyguin-docs-radius)',
         background: 'var(--cyguin-docs-accent)',
-        color: 'var(--cyguin-accent-fg, #0a0a0a)',
+        color: 'var(--cyguin-accent-fg, #0a0d17)',
         border: 'none',
         cursor: 'pointer',
         display: 'flex',
@@ -156,14 +156,14 @@ function DocsSearch({ value, onChange }: DocsSearchProps) {
           padding: '8px 8px 8px 32px',
           borderRadius: 'var(--cyguin-docs-radius)',
           border: '1px solid var(--cyguin-docs-border)',
-          background: 'var(--cyguin-bg-subtle, #f5f5f5)',
+          background: 'var(--cyguin-bg-subtle, #f1f3f6)',
           color: 'var(--cyguin-docs-text)',
           fontSize: '14px',
           fontFamily: 'var(--cyguin-docs-font)',
           boxSizing: 'border-box',
           outline: 'none',
         }}
-        onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--cyguin-border-focus, #f5a800)'; }}
+        onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--cyguin-border-focus, #ffd21f)'; }}
         onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--cyguin-docs-border)'; }}
       />
     </div>
@@ -272,7 +272,7 @@ function DocsNav({ groups, selectedId, selectedIndex, onSelectArticle, searchQue
                       width: '100%',
                       padding: '6px 12px 6px 28px',
                       background: isSelected ? 'var(--cyguin-docs-accent)' : 'none',
-                      color: isSelected ? 'var(--cyguin-accent-fg, #0a0a0a)' : 'var(--cyguin-docs-text)',
+                      color: isSelected ? 'var(--cyguin-accent-fg, #0a0d17)' : 'var(--cyguin-docs-text)',
                       border: 'none',
                       cursor: 'pointer',
                       textAlign: 'left',
