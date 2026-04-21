@@ -50,6 +50,7 @@ export interface DocsWidgetProps {
 
 export const defaultCssVars = {
   '--cyguin-docs-bg': 'var(--cyguin-bg, #0a0d17)',
+  '--cyguin-docs-bg-subtle': 'var(--cyguin-bg-subtle, #101521)',
   '--cyguin-docs-text': 'var(--cyguin-fg, #f1f3f6)',
   '--cyguin-docs-border': 'var(--cyguin-border, #252b3a)',
   '--cyguin-docs-accent': 'var(--cyguin-accent, #ffd21f)',

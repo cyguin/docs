@@ -156,7 +156,7 @@ function DocsSearch({ value, onChange }: DocsSearchProps) {
           padding: '8px 8px 8px 32px',
           borderRadius: 'var(--cyguin-docs-radius)',
           border: '1px solid var(--cyguin-docs-border)',
-          background: 'var(--cyguin-bg-subtle, #f1f3f6)',
+          background: 'var(--cyguin-docs-bg-subtle)',
           color: 'var(--cyguin-docs-text)',
           fontSize: '14px',
           fontFamily: 'var(--cyguin-docs-font)',

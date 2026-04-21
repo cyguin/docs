@@ -125,15 +125,15 @@ The `apiUrl` must return a JSON array of articles:
 
 ## Theming
 
-All colors use `--cyguin-*` CSS custom properties. Override on your root element or `:root`:
+All colors default to the cyguin dark theme and use `--cyguin-*` CSS custom properties. Override on your root element or `:root`:
 
 ```css
 :root {
-  --cyguin-bg: #ffffff;
-  --cyguin-bg-subtle: #f5f5f5;
-  --cyguin-border: #e5e5e5;
+  --cyguin-bg: #0a0d17;
+  --cyguin-bg-subtle: #101521;
+  --cyguin-border: #252b3a;
   --cyguin-border-focus: #f5a800;
-  --cyguin-fg: #0a0a0a;
+  --cyguin-fg: #f1f3f6;
   --cyguin-fg-muted: #888888;
   --cyguin-accent: #f5a800;
   --cyguin-accent-dark: #c47f00;
