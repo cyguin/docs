@@ -1,6 +1,6 @@
 # @cyguin/docs
 
-Embeddable help and documentation widget for Next.js — renders searchable, markdown-backed docs as a modal or sidebar overlay.
+Embeddable help and documentation widget for Next.js. Searchable, markdown-backed docs in a modal or sidebar — no external service needed.
 
 ## Quickstart
 
@@ -54,7 +54,7 @@ const handler = createAdminHandler({
 export { handler as POST, handler as PUT, handler as PATCH, handler as DELETE };
 ```
 
-`DOCS_ADMIN_SECRET` is required. Admin writes fail closed when the secret is missing.
+`DOCS_ADMIN_SECRET` is required. Admin routes fail closed without it.
 
 ### 4. Seed some articles
 
@@ -65,7 +65,6 @@ import { createSQLiteAdapter } from '@cyguin/docs/adapters/sqlite';
 const adapter = createSQLiteAdapter({ path: './docs.db' });
 const handler = createDocsHandler({ adapter });
 
-// POST /admin/docs — create article
 await handler.request(new Request('http://localhost/admin/docs', {
   method: 'POST',
   headers: { Authorization: 'Bearer your-secret', 'Content-Type': 'application/json' },
@@ -81,14 +80,14 @@ await handler.request(new Request('http://localhost/admin/docs', {
 ## Modes
 
 ### Modal (default)
-Floating corner button opens a centered overlay with backdrop. Click backdrop or press `Esc` to close.
+Floating corner button opens a centered overlay. Click the backdrop or press `Esc` to close.
 
 ```tsx
 <DocsWidget mode="modal" triggerLabel="Help" />
 ```
 
 ### Sidebar
-Panel slides in from the right edge. Good for persistent help panels.
+Panel slides in from the right — good for persistent help panels.
 
 ```tsx
 <DocsWidget mode="sidebar" triggerLabel="Docs" />
@@ -98,15 +97,15 @@ Panel slides in from the right edge. Good for persistent help panels.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `apiUrl` | `string` | `"/api/docs"` | Endpoint that returns article list |
-| `mode` | `"modal" \| "sidebar"` | `"modal"` | Widget display mode |
-| `triggerLabel` | `string` | `"Help"` | Label shown on the floating trigger button |
+| `apiUrl` | `string` | `"/api/docs"` | Endpoint returning article list |
+| `mode` | `"modal" \| "sidebar"` | `"modal"` | Modal or sidebar |
+| `triggerLabel` | `string` | `"Help"` | Label on the floating trigger button |
 | `defaultOpen` | `boolean` | `false` | Open on mount |
 | `className` | `string` | `""` | CSS class on root element |
 
 ## API Contract
 
-The `apiUrl` must return a JSON array of articles:
+The `apiUrl` endpoint must return a JSON array of articles:
 
 ```json
 [
@@ -125,7 +124,7 @@ The `apiUrl` must return a JSON array of articles:
 
 ## Theming
 
-All colors default to the cyguin dark theme and use `--cyguin-*` CSS custom properties. Override on your root element or `:root`:
+The widget is dark by default. Override `--cyguin-*` variables on `:root`:
 
 ```css
 :root {
