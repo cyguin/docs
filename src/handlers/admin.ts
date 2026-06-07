@@ -1,7 +1,14 @@
+import { timingSafeEqual } from 'node:crypto'
 import type { DocsAdapter, DocsHandlerOptions, NextHandler } from '../types'
 
 let _adapter: DocsAdapter | null = null
 let _secret: string | undefined = undefined
+
+function validateBearer(authHeader: string | null, secret: string): boolean {
+  const expected = `Bearer ${secret}`
+  if (!authHeader || authHeader.length !== expected.length) return false
+  return timingSafeEqual(Buffer.from(authHeader), Buffer.from(expected))
+}
 
 export function setAdminAdapter(adapter: DocsAdapter) {
   _adapter = adapter
@@ -30,9 +37,7 @@ export function createAdminHandler(options?: DocsHandlerOptions) {
       return Response.json({ error: 'Admin secret is not configured' }, { status: 500 })
     }
 
-    const authHeader = req.headers.get('Authorization')
-    const expected = `Bearer ${secret}`
-    if (authHeader !== expected) {
+    if (!validateBearer(req.headers.get('Authorization'), secret)) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
