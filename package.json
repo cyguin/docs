@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyguin/docs"
+    "url": "git+https://github.com/cyguin/docs.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -48,7 +48,9 @@
     "dev": "tsup --watch",
     "test": "vitest run",
     "pack:check": "npm pack --dry-run",
-    "prepublishOnly": "npm run build && npm test && npm run pack:check"
+    "prepublishOnly": "npm run build && npm test && npm run pack:check",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.0",
